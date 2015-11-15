@@ -10,11 +10,12 @@
 </body>
 <script>
 	(function(){
-		$.when("lai");
-		var promise = $.Deferred().resolve('lai');
-		promise.done(function(e){
-			console.info(e);
-		});
+	var promise = $.Deferred().resolve('manchu').done(function(e){
+		console.info(e);
+	});
+	$.when('foo', promise).done(function(e){
+		console.log(e);
+	});
 	})();
 </script>
 </html>

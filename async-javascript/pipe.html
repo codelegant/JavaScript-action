@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Promise-2</title>
+	<script src="../js/jquery-1.10.2.js"></script>
+</head>
+<style>
+	.error {
+		width: 300px;
+		height: 300px;
+		background: blue;
+		display: none;
+	}
+</style>
+
+<body>
+	<div class="error"></div>
+	<button id="btn">BUTTON</button>
+</body>
+<script>
+	(function(){
+		var slideUpDeferred=new $.Deferred();
+		var pipePromise=slideUpDeferred.pipe(function(e){console.log("done")},function(){console.log("fail")},function(){console.log("progress")});
+		$("#btn").on("click",function(){
+			$(".error").slideDown(function(){
+				slideUpDeferred.resolve("done");
+			});
+			
+		});
+	})();
+
+</script>
+
+</html>
