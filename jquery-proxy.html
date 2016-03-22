@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Proxy</title>
+    <script src="vendor/jquery-1.10.2.js"></script>
+</head>
+<body>
+<p>
+    <button type="button" id="test">Test</button>
+</p>
+<div id="log"></div>
+
+<script>
+    var me = {
+        type: "zombie",
+        test: function (event) {
+            console.log('You are in me.test.Type is:' + this.type);
+        }
+    };
+    var you = {
+        type: "person",
+        test: function (event) {
+            console.log('You are in you.test.Type is:' + this.type);
+        }
+    };
+
+    // Execute you.test() in the context of the `you` object
+    // no matter where it is called
+    // i.e. the `this` keyword will refer to `you`
+    var youClick = $.proxy(you.test, you);
+
+    // attach click handlers to #test
+    $("#test")
+    // this === "zombie"; handler unbound after first click
+            .on("click", $.proxy(me.test, me))
+
+            // this === "person"
+            .on("click", youClick)
+
+            // this === "zombie"
+            .on("click", $.proxy(you.test, me))
+
+            // this === "<button> element"
+            .on("click", you.test);
+</script>
+</body>
+</html>
