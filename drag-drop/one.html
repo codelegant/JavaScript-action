@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag</title>
+    <script src="../vendor/template.js"></script>
+</head>
+<body>
+<div id="content"></div>
+<script id="test" type="text/html">
+    <h1>{{title}}</h1>
+    <ul>
+        {{each list as value i}}
+        <li>索引 {{i + 1}} ：{{value}}</li>
+        {{/each}}
+    </ul>
+</script>
+<template id="template">
+    <h1>{{title}}</h1>
+    <ul>
+        {{each list as value i}}
+        <li>索引 {{i + 1}} ：{{value}}</li>
+        {{/each}}
+    </ul>
+</template>
+<script>
+    (function () {
+        'use strict';
+        var data = {
+            title: '标签',
+            list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+        };
+        var html = template('template', data);
+        document.getElementById('content').innerHTML = html;
+    })();
+</script>
+</body>
+</html>
