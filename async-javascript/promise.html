@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Promise</title>
-	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Promise</title>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-	<input type="text" id="paly_game">
+<input type="text" id="paly_game">
 </body>
 <script>
-	(function(){
-		var promptDeferred=new $.Deferred();
-		promptDeferred.always(function(){console.log("A choice wa made:")});
-		promptDeferred.fail(function(){console.log("No game today.");});
-		promptDeferred.done(function(){console.log("Starting game...")});
-		$("#paly_game").focus().on("keypress",function(e){
-			var Y=121,N=110;
-			if(e.keyCode===Y){
-				promptDeferred.resolve();
-			}else if(e.keyCode===N){
-				promptDeferred.reject();
-			}else{
-				return false;
-			}
-		});
-	})();
+  (function () {
+    var promptDeferred = new $.Deferred();
+    promptDeferred.always(function () {
+      console.log("A choice wa made:")
+    });
+    promptDeferred.fail(function () {
+      console.log("No game today.");
+    });
+    promptDeferred.done(function () {
+      console.log("Starting game...")
+    });
+    $("#paly_game").focus().on("keypress", function (e) {
+      var Y = 121, N = 110;
+      if (e.keyCode === Y) {
+        promptDeferred.resolve();
+      } else if (e.keyCode === N) {
+        promptDeferred.reject();
+      } else {
+        return false;
+      }
+    });
+  })();
 </script>
 </html>

@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Promise</title>
-	<script src="../vendor/jquery-1.10.2.js"></script>
+  <meta charset="UTF-8">
+  <title>Promise</title>
+  <script src="../vendor/jquery-1.10.2.js"></script>
 </head>
 <body>
-	
+
 </body>
 <script>
-	(function(){
-	var promise = $.Deferred().resolve('manchu').done(function(e){
-		console.info(e);
-	});
-	$.when('foo', promise).done(function(e){
-		console.log(e);
-	});
-	})();
+  (function () {
+    var promise = $.Deferred().resolve('manchu').done(function (e) {
+      console.info(e);
+    });
+    $.when('foo', promise).done(function (e) {
+      console.log(e);
+    });
+  })();
 </script>
 </html>

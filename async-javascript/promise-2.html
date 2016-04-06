@@ -2,47 +2,47 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<title>Promise-2</title>
-	<script src="../vendor/jquery-1.10.2.js"></script>
+  <meta charset="UTF-8">
+  <title>Promise-2</title>
+  <script src="../vendor/jquery-1.10.2.js"></script>
 </head>
 <style>
-	.error {
-		width: 300px;
-		height: 300px;
-		background: blue;
-		display: none;
-	}
+  .error {
+    width      : 300px;
+    height     : 300px;
+    background : blue;
+    display    : none;
+  }
 </style>
 
 <body>
-	<div class="error"></div>
-	<button id="btn">BUTTON</button>
+<div class="error"></div>
+<button id="btn">BUTTON</button>
 </body>
 <script>
-	(function(){
-		var slideUpDeferred=new $.Deferred();
-		slideUpDeferred.always=function(lai){
-			
-		}
-		slideUpDeferred.done(function(e){
-			console.dir(this);
-			console.log(e);
-		});
-		slideUpDeferred.fail(function(e){
-			console.error(e);
-		});
-		slideUpDeferred.progress(function(){
-			console.info("progress");
-		});
-		$("#btn").on("click",function(){
-			$(".error").slideDown(function(){
-				slideUpDeferred.resolve("done");
-				slideUpDeferred.reject("fail");
-			});
-			
-		});
-	})();
+  (function () {
+    var slideUpDeferred = new $.Deferred();
+    slideUpDeferred.always = function (lai) {
+
+    }
+    slideUpDeferred.done(function (e) {
+      console.dir(this);
+      console.log(e);
+    });
+    slideUpDeferred.fail(function (e) {
+      console.error(e);
+    });
+    slideUpDeferred.progress(function () {
+      console.info("progress");
+    });
+    $("#btn").on("click", function () {
+      $(".error").slideDown(function () {
+        slideUpDeferred.resolve("done");
+        slideUpDeferred.reject("fail");
+      });
+
+    });
+  })();
 
 </script>
 

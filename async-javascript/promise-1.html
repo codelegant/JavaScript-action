@@ -2,43 +2,43 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <style>
-	.error {
-		width: 300px;
-		height: 300px;
-		background: blue;
-		display: none;
-	}
+  .error {
+    width      : 300px;
+    height     : 300px;
+    background : blue;
+    display    : none;
+  }
 </style>
 
 <body>
-	<div class="error"></div>
-	<button id="btn">BUTTON</button>
+<div class="error"></div>
+<button id="btn">BUTTON</button>
 </body>
 <script type="text/javascript">
-	(function(){
-		var afterError=function(){
-			console.info("afterError");
-		}, failError=function(){
-			console.error("failError");
-		},alwaysError=function(){
-			console.log("alwaysError");
-		},outShow=function(){
-			console.info("I'm out");
-		};
-		$("#btn").on("click",function(){
-		var errorPromise=$(".error").fadeIn().promise();
-		var errorPromise_two=$(".error").fadeOut().promise();
-		errorPromise_two.done(outShow);
-		errorPromise.done(afterError);//监听完成状态
-		errorPromise.fail(failError);//监听失败
-		errorPromise.always(alwaysError);//完成后触发
-		});
-	})();
+  (function () {
+    var afterError = function () {
+      console.info("afterError");
+    }, failError = function () {
+      console.error("failError");
+    }, alwaysError = function () {
+      console.log("alwaysError");
+    }, outShow = function () {
+      console.info("I'm out");
+    };
+    $("#btn").on("click", function () {
+      var errorPromise = $(".error").fadeIn().promise();
+      var errorPromise_two = $(".error").fadeOut().promise();
+      errorPromise_two.done(outShow);
+      errorPromise.done(afterError);//监听完成状态
+      errorPromise.fail(failError);//监听失败
+      errorPromise.always(alwaysError);//完成后触发
+    });
+  })();
 
 </script>
 

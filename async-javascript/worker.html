@@ -2,22 +2,22 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<title>Worker</title>
+  <meta charset="UTF-8">
+  <title>Worker</title>
 </head>
 
 <body>
 
 </body>
 <script>
-	(function(){
-		var worker=new Worker("worker.js");
-		worker.addEventListener("message",function(e){
-			console.log(e.data);
-		});
-		worker.postMessage("football");
-		worker.postMessage("baseball");
-	})();
+  (function () {
+    var worker = new Worker("worker.js");
+    worker.addEventListener("message", function (e) {
+      console.log(e.data);
+    });
+    worker.postMessage("football");
+    worker.postMessage("baseball");
+  })();
 
 </script>
 
