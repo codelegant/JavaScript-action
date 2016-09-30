@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smear</title>
+</head>
+<body>
+<img src="bg.png" alt="bg.png" onclick="smear(this)">
+<script>
+  function smear(img){
+    const canvas=document.createElement('canvas');
+    canvas.width=img.width;
+    canvas.height=img.height;
+
+    const context=canvas.getContext('2d');
+    context.drawImage(img,0,0);
+    const pixels=context.getImageData(0,0,img.width,img.height);
+
+    const worker=new Worker('SmearWorker.js');
+    worker.postMessage(pixels);
+
+    worker.onmessage=e=>{
+      const smeared_pixels=e.data;
+      context.putImageData(smeared_pixels,0,0);
+      img.src=canvas.toDataURL();
+      worker.terminate();
+      canvas.width=canvas.height=0;
+    };
+  }
+</script>
+</body>
+</html>
