@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/@reactivex/rxjs@5.2.0/dist/global/Rx.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" id="btn">Button</button>
+    <button type="button" id="btn_2">Button2</button>
+    <button type="button" id="btn_3">Button3</button>
+    <button type="button" id="btn_4">Button4</button>
+</body>
+<script>
+    const getById = id => document.getElementById(id);
+    const button = getById('btn');
+    const button_2 = getById('btn_2');
+    const button_3 = getById('btn_3');
+    const button_4 = getById('btn_4');
+
+    Rx.Observable
+        .fromEvent(button, 'click')
+        .subscribe(() => console.log('Clicked'));
+
+    Rx.Observable
+        .fromEvent(button_2, 'click')
+        .scan(count => count + 1, 0)
+        .subscribe(count => console.log(`Clicked ${count} times`));
+
+    Rx.Observable
+        .fromEvent(button_3, 'click')
+        .throttleTime(1000)
+        .scan(count => count + 1, 0)
+        .subscribe(count => console.log(`Click ${count} times`));
+
+    Rx.Observable
+        .fromEvent(button_4, 'click')
+        .throttleTime(1000)
+        .map(event => event.clientX)
+        .scan((count, clientX) => count + clientX, 0)
+        .subscribe(count => console.log(count));
+
+    let a = 10;
+    setTimeout(() => a = 20, 1000);
+    Rx.Observable.of(a).subscribe(() => console.log(a))
+</script>
+
+</html>

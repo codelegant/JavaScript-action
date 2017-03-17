@@ -1,0 +1,27 @@
+{
+  "name": "javascript-action",
+  "version": "1.0.0",
+  "description": "JavaScript学习实践",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codelegant/JavaScript-action.git"
+  },
+  "keywords": [
+    "javascript",
+    "action"
+  ],
+  "author": "codelegant",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codelegant/JavaScript-action/issues"
+  },
+  "homepage": "https://github.com/codelegant/JavaScript-action#readme",
+  "dependencies": {
+    "rxjs": "^5.2.0",
+    "rxjs-es": "^5.0.0-beta.12"
+  }
+}
